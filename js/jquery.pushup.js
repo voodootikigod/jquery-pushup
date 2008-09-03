@@ -91,7 +91,6 @@ jQuery.pushup = {
 			});
 		}
 		image = imgSrc+jQuery.pushup.activeBrowser.toLowerCase();
-		alert(image);
 		styles = (jQuery.pushup.browsVer.IE < 7 && jQuery.pushup.browsVer.IE) ? {
 			filter: 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src=\''+image+'.png\'\', sizingMethod=\'crop\')'
 		} : {
