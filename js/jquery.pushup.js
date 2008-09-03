@@ -91,12 +91,13 @@ jQuery.pushup = {
 			});
 		}
 		image = imgSrc+jQuery.pushup.activeBrowser.toLowerCase();
-		styles = (jQuery.pushup.browsVer.IE < 7 && jQuery.pushup.browsVer.IE) ? {
-			filter: 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src=\''+image+'.png\'\', sizingMethod=\'crop\')'
-		} : {
-			background: 'url('+image+'.png) no-repeat top left'
+		jQuery('.pushup_icon').css("background", "url("+image+".png) no-repeat top left");
+		if (jQuery.pushup.browsVer.IE < 7 && jQuery.pushup.browsVer.IE) {
+			var bgIMG = jQuery('.pushup_icon').css('background-image');
+			var iebg = bgIMG.split('url("')[1].split('")')[0];
+			jQuery('.pushup_icon').css('background-image', 'none');
+			jQuery('.pushup_icon').get(0).runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + iebg + "',sizingMethod='scale')";
 		}
-		jQuery('.pushup_icon').css(styles);
 		jQuery('#pushup').fadeIn('slow');
 		if(jQuery.pushup.options.fadeDelay != undefined) {
 			time = jQuery.pushup.options.fadeDelay * 1000;
